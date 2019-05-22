@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            body{
+                height: 3000px;
+
+            }
+            .btn{
+                position: fixed;
+                right: 10px;
+                bottom: 10px;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <button type="button" class = "btn" id = "back">backTop</button>
+        <script>
+            window.onload = function() {
+                var speed = 0;
+                var timer = null;
+                var btn = document.getElementById("back");
+                var flag = true;
+                //滚动条滚动事件 达到一定值 显示按钮
+                window.onscroll = function() {
+                    var scroll_top = document.documentElement.scrollTop || document.body.scrollTop;
+                    if(scroll_top >= 600 ) {
+                        btn.style.display = "block";
+                        // console.log(scroll_top);
+                    } else {
+                        btn.style.display = "none";
+                    }
+                    if(!flag) {
+                        clearInterval(timer);
+                    }
+                    // 滚动条滚动事件触发的频率大于定时器的频率
+                    // 所以当滚动条开始滚动的时候 falg置为false 定时器停止运行
+                    // 定时器启动的时候 上面的if语句就不会触发 而当再次滚动滚动条的时候 flag就会至于false 触发第二次的时候 就会停止定时器
+                    flag = false;
+
+                }
+                //点击按钮回到顶部
+                btn.onclick = function() {
+                    // console.log(flag);
+                    timer = setInterval(function(){
+                        //  要放在里面 每隔50毫秒要重新获取一次scrollTop的值
+                        var scroll_top = document.documentElement.scrollTop || document.body.scrollTop;
+                        speed = scroll_top / 5;  //返回的速度
+                        document.documentElement.scrollTop = document.body.scrollTop = scroll_top - speed;
+                        if(scroll_top == 0) {
+                        clearInterval(timer);
+                        }
+                        flag = true;
+                    }, 50)
+                    }
+            }
+        </script>
+    </body>
+</html>

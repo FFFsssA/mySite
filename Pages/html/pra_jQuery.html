@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="../images/bitbug_favicon (1).ico" type="image/x-icon">
+    <script src="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js"></script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-size: 10px;
+        }
+
+        #wrap {
+            display: flex;
+            height: 70rem;
+            width: 98%;
+            margin: auto;
+            margin-top: .5rem;
+            margin-bottom: .5rem;
+            flex-direction: column;
+        }
+
+        .secWrap {
+            flex: 1.0;
+            /* border: 1px solid rgb(75, 34, 221); */
+            display: flex;
+            flex-direction: row;
+        }
+
+        .showArea {
+            flex: 1;
+            border: 1px solid rgb(75, 34, 221);
+            margin-left: .3rem;
+            margin-right: .3rem;
+            margin-top: .2rem;
+            margin-bottom: .2rem;
+            box-shadow: 1px 1px 1px 1px #888;
+            display: flex;
+            align-items: center;
+        }
+        #ctrl_btn{
+            width: 55%;
+            height: 4rem;
+            margin: auto;
+        }
+        #ctrl_btn .bttn{
+            height: 100%;
+            width: 100%;
+        }
+        .demo1{
+            height: 3rem;
+            width: 3rem;
+            background-color: red;
+            height:5rem; width: 100%;
+        }
+        .addWidth{
+            width: 10rem;
+        }
+        .addHeight{
+            height: 15rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 总绑带 -->
+    <div id="wrap">
+        <div id = "ctrl_btn"><button type = "button" id = "btn" class = "bttn" onfocus="blur()">开始运行</button></div>
+        <div class="secWrap">
+            <div class="showArea">
+                <div class = "demo1"></div>
+            </div>
+            <div class="showArea"><div class = "demo1"></div></div>
+            <div class="showArea"><div class = "demo1"></div></div>
+            <div class="showArea"><div class = "demo1">Fuck</div></div>
+        </div>
+        <div class="secWrap">
+            <div class="showArea"></div>
+            <div class="showArea"></div>
+            <div class="showArea"></div>
+            <div class="showArea"></div>
+        </div>
+        <div class="secWrap">
+            <div class="showArea"></div>
+            <div class="showArea"></div>
+            <div class="showArea"></div>
+            <div class="showArea"></div>
+            <div class="showArea"></div>
+        </div>
+        <div class="secWrap">
+            <div class="showArea"></div>
+            <div class="showArea"></div>
+            <div class="showArea"></div>
+            <div class="showArea"></div>
+            <div class="showArea"></div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#btn").click(function() {
+                setInterval(function() {
+                    $(".demo1:eq(0)").animate({
+                        width:'toggle'
+                    })
+                    $(".demo1:eq(1)").animate({
+                        width:'toggle'
+                    })
+                    $(".demo1:eq(2)").animate({
+                        width:'toggle'
+                    })
+                    $(".demo1:eq(3)").animate({
+                        width:'toggle'
+                    })
+                },1000)
+                // $(".demo1:eq(2)")
+                // $(".demo1:eq(2)")
+                // $(".demo1:eq(2)")
+                // $(".demo1:eq(2)")
+            })
+        })
+    </script>
+</body>
+
+</html>

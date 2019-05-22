@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id = "wrap">
+        <div id = "toolbar"></div>
+        <div id = "game"></div>
+    </div>
+    <script>
+        /*1.生成地图矩阵 size == 尺寸
+          2.生成矩阵内随机炸弹 bomb bombX = parseInt(Math.random() * size)  当 game[bombX][bombY] === 0
+          的时候 让其 = 10 即赋予炸弹的索引 并让炸弹数量自加
+          3.统计方格周围的炸弹数量：
+          先遍历地图 找出不是炸弹的方格 然后构造函数 对不是炸弹的方格进行周围炸弹统计 假设每一个方格的坐标都是
+          (x, y) 那么可以得到周围8个方格的坐标 这 8 个坐标存储在一个二维数组中 通过一个循环遍历这个二维数组
+          如果其中的值 > 8 那么炸弹数量加一 最后返回炸弹数量 赋值给方格
+        */
+        var game = []
+        var size = 10  //地图尺寸
+        var bombNum = 10  //炸弹数量
+
+        //生成10X10数组 初始化矩阵
+        for(var i = 0; i < size; i++) {
+            game.push(
+                Array(size).fill(0)
+            )
+        }
+        // 生成随机炸弹
+        function initBomb() {
+            var nowBombNum = 0
+            var bombX
+            var bombY
+            while(nowBombNum < bombNum) {
+                bombX = parseInt(Math.random() * size)
+                bombY = parseInt(Math.random() * size)
+                //尝试放雷
+                if(game[bombX][bombY] === 0) {
+                    game[bombX][bombY] = 10  //因为一个方格周围只有8个方格
+                    nowBombNum++
+                }
+            }
+        }
+
+        function countInsideBomnb(x, y) {
+            // 每个方格周围对应的坐标
+            var inside = [
+                [x - 1, y - 1],
+                [x - 1, y],
+                [x - 1, y + 1],
+                [x , y - 1],
+                [x , y],
+                [x, y + 1],
+                [x + 1, y - 1],
+                [x + 1, y],
+                [x + 1, y +1],
+            ]
+            var count = 0
+            for(var i = 0; i < inside.length; i++) {
+                var x = inside[i][0]  //x 表示inside的x列
+                var y = inside[i][1]
+                try{
+                    count += (game[x][y] > 8)  //每个方格周围是8个方格 如果大于8 就是炸弹
+                }catch(e){}
+            }
+            return count
+        }
+
+        //遍历二维数组 把方格周围的所有炸弹统计出来
+        function countBomb() {
+            for(var i = 0; i < size; i++) {
+                for(var j = 0; j< size; j++) {
+                    //每次遇到炸弹会跳过
+                    var isBomb = game[i][j]
+                    if (isBomb === 10) {
+                        continue
+                    }
+                    //构造一个函数对不是炸弹的方格进行周围的炸弹统计
+                    var insideBombs = countInsideBomnb(i, j)
+                    game[i][j] = insideBombs
+                }
+            }
+        }
+        //调用
+        initBomb()
+        countBomb()
+    </script>
+</body>
+</html>

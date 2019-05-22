@@ -1,0 +1,75 @@
+<!-- 
+    基于jQuery实现层具有次感的轮播
+    原理：改变列表的宽度、高度、left值、zIndex值
+    实现步骤：1 CSS设置li的四种的值
+             2 Javascript中将每个li的四种状态的值存入数组形成二维数组
+             3 根据需要递进或者递减数组并循环对二维数组的值进行访问 用以改变li的状态
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #wrap {
+            height: 500px;
+            width: 1000px;
+            position: relative;
+            margin: 0 auto;
+        }
+        #list {
+            list-style-type: none;
+        }
+        .items img{
+            width: 100%;
+        }
+        #item1 {
+            position: absolute;
+            left: 0;
+            width: 180px;
+            z-index: 0;
+        }
+        #item2 {
+            position: absolute;
+            left: 70;
+            width: 270px;
+            z-index: .5;
+        }
+        #item3 {
+            position: absolute;
+            left: 120px;
+            width: 380px;
+            z-index: 1;
+        }
+        #item4 {
+            position: absolute;
+            right: 70px;
+            width: 270px;
+            z-index: .5;
+        }
+        #item5 {
+            position: absolute;
+            right: 0;
+            width: 180px;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <ul id="list">
+            <li id="item1" class = "items"><img src="../images/sexyGirl10.jpg" alt=""></li>
+            <li id="item2" class = "items"><img src="../images/sexyGirl11.jpg" alt=""></li>
+            <li id="item3" class = "items"><img src="../images/sexyGirl5.jpg" alt=""></li>
+            <li id="item4" class = "items"><img src="../images/sexyGirl13.jpg" alt=""></li>
+            <li id="item5" class = "items"><img src="../images/sexyGirl14.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .navList{
+                list-style-type: none;
+                background-color: skyblue;
+                top: 60px;
+                z-index: 100;
+            }
+            .navList.navSolid{
+                position: fixed;
+                top: 60px;
+            }
+            .navItem{
+                float: left;
+                margin-left: 20px;
+            }
+            .list{
+                list-style-type: none;
+            }
+            .item{
+                width: 200px;
+                height: 200px;
+            }
+            .item:nth-child(1){
+                background-color: skyblue;
+            }
+            .item:nth-child(2){
+                background-color: pink;
+            }
+            .item:nth-child(3){
+                background-color: red;
+            }
+            .item:nth-child(4){
+                background-color: yellowgreen;
+            }
+            .item:nth-child(5){
+                background-color: rgb(41, 99, 122);
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "nav">
+            <ul id = "ulNav"class = "navList">
+                <li class = "navItem">首页</li>
+                <li class = "navItem">首页</li>
+                <li class = "navItem">首页</li>
+                <li class = "navItem">首页</li>
+                <li class = "navItem">首页</li>
+            </ul>
+        </div>
+        <div class = "placeholder">
+            <ul class = "list">
+                <li class = item><p>主要就是判断scrollTop的值</p></li>
+                <li class = item><p>然后添加class样式position：fixed</p></li>
+                <li class = item>2</li>
+                <li class = item>3</li>
+                <li class = item>4</li>
+            </ul>
+        </div>
+        <script>
+            window.onload = function() {
+                    var nav = document.getElementById("ulNav");
+                 window.onscroll = function() {
+                     //作用域问题还是要 在外部只会在每次刷新页面的时候起作用
+                     //后面的是IE浏览器和苹果自带的浏览器
+                     var scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageXOffset;  
+                     if(scrollTop > 130) {
+                        nav.className = "navList navSolid"; 
+                     } else {
+                        nav.className = "navList";
+                     }
+                 }
+            }
+        </script>
+    </body>
+</html>

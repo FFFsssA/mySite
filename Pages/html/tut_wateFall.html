@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "utf-8">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: darkgray;
+        }
+        #box{
+            display: flex;
+            position: relative;
+            width: 80%;
+            /* height: 500px; */
+            margin: 0 auto;
+            flex-direction: row;
+        }
+        .item{
+            flex: 1; /*弹性占比  1 /item*/
+            margin: 13px;
+        }
+        .item>img{
+            width: 100%;
+            margin-top: 3px;
+            border: 8px solid white;
+            transition: all .2s ease-in-out;
+        }
+        .item>img:hover{
+            cursor: pointer;
+            transform: scale(1.02);  /*图片放大*/
+            box-shadow: 0px 3px 2px 1px #999;  /*阴影*/
+        }
+    </style>
+</head>
+<body>
+    <div id = "box">
+        <div class = "item" id = "watFall-0"></div>
+        <div class = "item" id = "watFall-1"></div>
+        <div class = "item" id = "watFall-2"></div>
+        <div class = "item" id = "watFall-3"></div>
+    </div>
+    <script>
+        var windowHeight = window.screen.height + 500;
+        var index = 0;
+        window.onload = function() {
+            insertImg();
+            window.document.addEventListener("scroll", function() {
+                if(document.documentElement.scrollTop + window.screen.height > document.documentElement.scrollHeight) {
+                    windowHeight += 500;
+                    insertImg();
+                }
+            })
+        }
+         //setInterval
+        var insertImg = function() {
+            var insert = setInterval(function () {
+                if(document.documentElement.scrollHeight > windowHeight) {
+                    clearInterval(insert);
+                }
+                var min_div = minDiv();
+                // console.log(min_div);
+                //拿到后 插入图片
+                var img= document.createElement("img");
+                index++;
+                if(index > 15){
+                    index = 0;
+                }
+                img.setAttribute("src", "../images/sexyGirl" + index + ".JPG")
+                min_div.appendChild(img);
+                }, 50)  //  设置计时器、给定浏览器渲染的时间
+        }
+
+        var minDiv = function() {
+            var wf0 = document.getElementById("watFall-0");
+            var wf1 = document.getElementById("watFall-1");
+            var wf2 = document.getElementById("watFall-2");
+            var wf3 = document.getElementById("watFall-3");
+
+            var wfImg0 = wf0.children;  // 每列下面的img
+            var wfImg1 = wf1.children;
+            var wfImg2 = wf2.children;
+            var wfImg3 = wf3.children;
+
+            var wfHeight0 = calculate(wfImg0);  //计算得到img的高度并赋值
+            var wfHeight1 = calculate(wfImg1);
+            var wfHeight2 = calculate(wfImg2);
+            var wfHeight3 = calculate(wfImg3);
+
+            // console.log("First col: " + wfHeight0);
+            //计算最小列 Math.min();
+            
+            var minCol = Math.min(wfHeight0, wfHeight1, wfHeight2,wfHeight3);
+            // console.log(minCol);
+            //判断
+            if(wfHeight0 == minCol) {
+                return wf0;
+            }
+            if(wfHeight1 == minCol) {
+                return wf1;
+            }
+            if(wfHeight2 == minCol) {
+                return wf2;
+            }
+            if(wfHeight3 == minCol) {
+                return wf3;
+            }
+
+            }
+        var calculate = function(wfImgs) {
+            if(wfImgs == null || wfImgs == 0) {  //当前列没有图片
+                return 0;
+            } else {
+                var height = 0;
+                //计算当前列的总高度
+                for(var i = 0; i< wfImgs.length; i++) {
+                    var img = wfImgs[i];
+                    var imgH = img.height;
+                    height += imgH;
+                }
+                return height;
+            }
+        }
+        // 思路!
+        // 布局 设置样式
+        // 计算最小列
+        // 插入图片
+        // 无限滚动图片
+    </script>
+</body>
+
+</html>

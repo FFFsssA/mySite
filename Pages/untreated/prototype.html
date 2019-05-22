@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 原型 和 原型链
+        window.onload = function () {
+            //  不使用原型  其实我也就是这样写。。
+            // var fs = 3;
+            // var sf = 4;
+            // function add(x, y) {
+            //     return x + y;
+            // }
+            // function minus(x, y) {
+            //     return x - y;
+            // }
+            // alert(add(3, 4));
+            
+            //  初始原型1
+            var caculator = function (mark1, mark2) {
+                this.mark1 = mark1;
+                this.mark2 = mark2;
+            }
+            // 通过给Calculator对象的prototype属性赋值对象字面量来设定Calculator对象的原型
+            // caculator.prototype = {
+            //     add: function(x, y) {
+            //         return x + y;
+            //     },
+            //     minus: function(x, y) {
+            //         return x - y;
+            //     }
+            // }
+            // var Caculator = new caculator;
+            // alert(typeof Caculator);
+
+            //初始原型2
+            // 在赋值原型prototype的时候使用function立即执行的表达式来赋值
+            // 可以封装私有的function，通过return的形式暴露出简单的使用名称，以达到public/private的效果
+            // caculator.prototype = function(){
+            //     function add(x, y) {
+            //         return x + y;
+            //     }
+            //     function minux(x, y) {
+            //         return x - y;
+            //     }
+            //     return {
+            //         add : add,
+            //         minus: minux
+            //     }
+            // }();
+            // var Caculator = new caculator;
+            // alert(typeof Caculator);
+            var baseCaculator = function() {
+                this.fs = 3;
+            }
+            var caculator = function() {
+                this.sf = 1;
+            }
+            baseCaculator.prototype = {
+                add: function(x, y) {
+                    return x + y;
+                },
+                minus: function(x, y) {
+                    return x - y;
+                }
+            }
+            
+            caculator.prototype = new baseCaculator;  //实例化到caculator的原型上
+            caculator.prototype.add = function(x, y) {  //重写原型
+                return x + y + this.sf;
+            };
+            var cal = new caculator;  //无论怎么实例化caculator 其原型都指向basecaculator的原型
+            var alc = new caculator;
+            alert(cal.add(1, 3));
+        }
+    </script>
+</body>
+
+</html>
