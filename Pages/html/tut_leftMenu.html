@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            *{
+                padding: 0px;
+                margin: 0px;
+            }
+            li{
+                list-style-type: none;
+            }
+            a{
+                text-decoration: none;
+            }
+            #content{
+                position: relative;
+                width: 100%;
+            }
+            #nav{
+                position: absolute;
+                left: 0px;
+                width: 12%;
+                background-color: rgba(0, 0, 0, .9);
+                box-shadow: 0px 2px 2px 1px #888;
+            }
+            .fs-1{
+                text-align: center;
+                padding: 15px;
+            }
+            .fs-1:hover{
+                background-color: rgba(0, 0, 0, .6)
+            }
+            .fs-1 a{
+                color: rgba(255, 255, 255,.6);
+            }
+            /* .fs-1 li{
+                margin: 20px 0px;
+            } */
+            .show1{
+                display: none;
+                display: none;
+                height: 250px;
+                width: 88%;
+                position: absolute;
+                right: 0px;
+                box-shadow: 0px 2px 2px 1px #888;
+                line-height: 250px;
+                text-align: center;
+            }
+            .show2{
+                display: none;
+                display: none;
+                height: 250px;
+                width: 88%;
+                position: absolute;
+                right: 0px;
+                box-shadow: 0px 2px 2px 1px #888;
+                line-height: 250px;
+                text-align: center;
+            }
+            .show3{
+                display: none;
+                display: none;
+                height: 250px;
+                width: 88%;
+                position: absolute;
+                right: 0px;
+                box-shadow: 0px 2px 2px 1px #888;
+                line-height: 250px;
+                text-align: center;
+            }
+            .show4{
+                display: none;
+                display: none;
+                height: 250px;
+                width: 88%;
+                position: absolute;
+                right: 0px;
+                box-shadow: 0px 2px 2px 1px #888;
+                line-height: 250px;
+                text-align: center;
+            }
+            .show5{
+                display: none;
+                display: none;
+                height: 250px;
+                width: 88%;
+                position: absolute;
+                right: 0px;
+                box-shadow: 0px 2px 2px 1px #888;
+                line-height: 250px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <div id="nav">
+                <div class = "fs-1">
+                    <a href="#">
+                        <li>默认</li>
+                    </a>
+                </div>
+                <div class = "fs-1">
+                    <a href="#">
+                        <li>option</li>
+                    </a>
+                </div>
+                <div class = "fs-1">
+                    <a href="#">
+                        <li>option</li>
+                    </a>
+                </div>
+                <div class = "fs-1">
+                    <a href="#">
+                        <li>option</li>
+                    </a>
+                </div>
+                <div class = "fs-1">
+                    <a href="#">
+                        <li>option</li>
+                    </a>
+                </div>
+            </div>
+            <div class="show1">
+                <P>TextTextTextTextTextTextTextTextText</P>
+            </div>
+            <div class="show2">
+                <p>AreaAreaAreaAreaAreaAreaAreaAreaArea</p>
+            </div>
+            <div class="show3">
+                <p>FSFSFSFSFSFSFSFSFSFSFSFSFSFFSFSFSFSFF</p>
+            </div>
+            <div class="show4">
+                <p>diffrentdiffrentdiffrentdiffrentdiffrent</p>
+            </div>
+            <div class="show5">
+                <p>facefacefacefacefacefacefacefacefaceface</p>
+            </div>
+        </div>
+        
+
+        <script>
+            // function $(Class){
+            //     return document.getElementsByClassName(Class)[0];
+            // }
+            window.onload = function() {
+                var opt = document.getElementsByClassName("fs-1");
+                var show1 = document.getElementsByClassName("show1")[0];
+                var show2 = document.getElementsByClassName("show2")[0];
+                var show3 = document.getElementsByClassName("show3")[0];
+                var show4 = document.getElementsByClassName("show4")[0];
+                var show5 = document.getElementsByClassName("show5")[0];
+                
+
+                opt[0].onmouseenter = function() {
+                    show1.style.display = "block";
+                    show1.onmouseenter = function() {
+                        show1.style.display = "block";
+                    }
+                    show1.onmouseleave = function() {
+                        show1.style.display = "none";
+                    }
+                }
+                opt[0].onmouseleave = function() {
+                    show1.style.display = "none";
+                }
+
+                opt[1].onmouseenter = function() {
+                    show2.style.display = "block";
+                    show2.onmouseenter = function() {
+                        show2.style.display = "block";
+                    }
+                    show2.onmouseleave = function() {
+                        show2.style.display = "none";
+                    }
+                }
+                opt[1].onmouseleave = function() {
+                    show2.style.display = "none";
+                }
+
+                opt[2].onmouseenter = function() {
+                    show3.style.display = "block";
+                    show3.onmouseenter = function() {
+                        show3.style.display = "block";
+                    }
+                    show3.onmouseleave = function() {
+                        show3.style.display = "none";
+                    }
+                }
+                opt[2].onmouseleave = function() {
+                    show3.style.display = "none";
+                }
+
+                opt[3].onmouseenter = function() {
+                    show4.style.display = "block";
+                    show4.onmouseenter = function() {
+                        show4.style.display = "block";
+                    }
+                    show4.onmouseleave = function() {
+                        show4.style.display = "none";
+                    }
+                }
+                opt[3].onmouseleave = function() {
+                    show4.style.display = "none";
+                }
+
+                opt[4].onmouseenter = function() {
+                    show5.style.display = "block";
+                    show5.onmouseenter = function() {
+                        show5.style.display = "block";
+                    }
+                    show5.onmouseleave = function() {
+                        show5.style.display = "none";
+                    }
+                }
+                opt[4].onmouseleave = function() {
+                    show5.style.display = "none";
+                }
+
+                // show1.onmouseenter = function() {
+                //     show1.style.disply = "block";
+                // }
+                //给每个div都添加鼠标悬停的事件
+            }
+        </script>
+    </body>
+</html>

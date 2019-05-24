@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#wrap{
+    width: 100%;
+    position: relative;
+    height: 500px;
+    border: 1px solid skyblue;
+    margin: 10px;
+}
+#left{
+    position: absolute;
+    display: flex;
+    flex-direction: column;  /*垂直分布*/
+    left: 0px;
+    width: 10%;
+    height: 100%;
+    background-color: rgb(41, 46, 50);
+    box-shadow: 0px 2px 2px 2px  #888;
+}
+#middle{
+    position: absolute;
+    left: 10%;
+    width: 30%;
+    height: 100%;
+    text-align: center;
+    box-shadow: 0px 2px 2px 2px  #888;
+}
+.opt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex: 1.0;
+    padding: 10px 0px;  /*上下左右*/
+}
+.opt a{
+    text-decoration: none;
+    color: white;
+    font-family: 微软雅黑;
+    font-size: 16px;
+    font-weight: 150;
+}
+.opt a:hover{
+    background-color: rgba(0, 0, 0, .5);
+    font-size: 18px;
+}
+.menu_1{
+    position: absolute;
+    display: none;
+    left: 10%;
+    width: 300px;
+    height: 400px;
+    box-shadow: 0px 2px 2px 2px  #888;
+    background-color: white;
+    z-index: 10;
+}
+.menu_2{
+    position: absolute;
+    top: 60px;
+    display: none;
+    left: 10%;
+    width: 300px;
+    height: 400px;
+    box-shadow: 0px 2px 2px 2px  #888;
+    background-color: white;
+    z-index: 10;
+}
+.menu_3{
+    position: absolute;
+    display: none;
+    top: 120px;
+    left: 10%;
+    width: 300px;
+    height: 400px;
+    box-shadow: 0px 2px 2px 2px  #888;
+    background-color: white;
+    z-index: 10;
+}
+.menu_4{
+    position: absolute;
+    display: none;
+    top: 180px;
+    left: 10%;
+    width: 300px;
+    height: 400px;
+    box-shadow: 0px 2px 2px 2px  #888;
+    background-color: white;
+    z-index: 10;
+}
+.menu_5{
+    position: absolute;
+    display: none;
+    top: 240px;
+    left: 10%;
+    width: 300px;
+    height: 400px;
+    box-shadow: 0px 2px 2px 2px  #888;
+    background-color: white;
+    z-index: 10;
+}
+.menu_6{
+    position: absolute;
+    display: none;
+    bottom: 0px;
+    left: 10%;
+    width: 300px;
+    height: 400px;
+    box-shadow: 0px 2px 2px 2px  #888;
+    background-color: white;
+    z-index: 10;
+    
+}
+.menu_left{
+    flex: 1.0;
+    flex-direction: row;
+    padding: 10px 0px;;
+}
+.menu_middle{
+    flex: 1.0;
+    flex-direction: row;
+    padding: 10px 0px;;
+}
+.menu_right{
+    flex: 1.0;
+    flex-direction: row;
+    padding: 10px 0px;;
+}
+.menu_son{
+    text-align: center;
+    margin-top: 15px;
+}

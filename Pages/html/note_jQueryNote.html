@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 2019.3.21 used jquery2.0.2 here-->
+    <script src="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js"></script>
+    <title>Document</title>
+    <style>
+        #wrap {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+
+        #demoArea {
+            position: absolute;
+            left: 0px;
+            height: 600px;
+            width: 25%;
+        }
+
+        #noteArea {
+            position: absolute;
+            right: 0px;
+            /* 随内容增加 */
+            height: 100%;  
+            width: 75%;
+        }
+
+        #demo {
+            height: 180px;
+            width: 180px;
+            background-color: skyblue;
+            line-height: 180px;
+            text-align: center;
+        }
+
+        .blue {
+            color: blue;
+        }
+        .list{
+            font-size: 32px;
+            font-family: 华文行楷;
+            margin-bottom: 10px;
+            padding: 0px;
+        }
+        .item{
+            margin-left: 80px;
+            font-size: 18px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
+</head>
+<!-- 每种应用效果都会进行注释 单独拿出来也能使用 其中一种的用法 会尝试在页面中显示代码
+用以复习以下html没有使用过的标签
+-->
+
+<body>
+    <script>
+        /* //1  文档加载
+        // $(document).ready(function() {
+        //     console.log("1");
+        // });*/
+
+        /*//2 jQuery选择器
+        $(document).ready(function() {
+            // 主要有 .class  #id  label  this  [href](属性) 选择器
+            $("button").click(function() {
+                $("#demo").hide();
+            });
+        });*/
+
+        /*//3 jQuery事件
+        $(document).ready(function() {
+            // main click  dbclick  mouseenter  mousedown  mouseup  mouseleave  keypress keydown keyup hover
+            // submit  change  focus  blur(失去焦点)  load  resize  scroll  unload
+            $("input").blur(function() {
+                $("#demo").hide(1000);
+            });
+        });*/
+
+        /*//4 jQuery 效果
+        $(document).ready(function () {
+            // hide  show  toggle slideDown  slideUp  slideToggle  animate
+            $("button").click(function () {
+                $("#demo").animate({
+                    height: "300px",
+                    width: "300px"
+                }
+                )
+            });
+
+        });*/
+
+        /*//5 jQuery 获取属性/操作样式
+        $(document).ready(function() {
+            $("#btn1").click(function() {
+                //获取属性
+                alert($("input").val()
+                + "html" + $("#demo").html()  //获取元素下面的所有元素
+                + "text" + $("p").text()
+                + "attr" + $("button").attr("type")  //获得元素的type的值
+                );
+            })
+            $("#btn2").click(function() {
+                $("p").text(function(i, origText) {
+                    return "旧文本: " + origText + " 新文本: Hello world! (index: " + i + ")";
+                })
+            });
+            $("#btn2").click(function() {
+                //添加元素  append prepend after befor
+                $("p").append("child");
+                // 删除元素 empty
+                $("h1").remove(); //remove(.class)
+            });
+        });*/
+
+        /*//5 jQuery 操作CSS样式
+        $(document).ready(function() {
+            //addClass  removeClass  toggleClass  css()
+            $("#btn1").click(function() {
+                $("h1").addClass("blue");
+            })
+        });*/
+
+        /*//5 jQuery 遍历祖先 孩子
+        $(document).ready(function() {
+            // parent parents(所有祖先) childen(直接子元素) find(*) filter
+            $("#btn1").click(function() {
+                $("P").first().parent().css({"background-color": "green", "height": "250px"})
+                $("h1").filter(".h1").css({"color": "red"});
+            })
+        });*/
+
+    </script>
+    <div id="wrap">
+        <div id="demoArea">
+            <div id="demo">demo
+                <p>P1P1P1P1</p>
+            </div>
+            <button type="button" id="btn1">click</button>
+            <button type="button" id="btn2">click</button>
+            name: <input type="text" value="name">
+            <p>我是paragraph1</p>
+            <h1 class="h1">h1h1h1h1</h1>
+            <h1 class="h2">h1h1h1h1</h1>
+        </div>
+
+        
+        <div id="noteArea">
+            <ul class="list">
+                一：文档加载
+                <li class="item">$(document).ready(function() {console.log("1");});</li>
+                <li class="item">载入时，等待页面加载完成在进行加载<b>.js</b>文件的内容</li>
+            </ul>
+            <ul class="list">
+                二：选择器
+                <li class="item">主要有<b><span>.class  #id  label  this  [href](属性)</span></b>( 选择器</li>
+                <li class="item">[href] 是选择带有href属性的标签</li>
+                <li class="item">例如：$("[href]") 选取所有的带有href属性的标签</li>
+            </ul>
+            <ul class="list">
+                三：事件
+                <li class="item">以下是主要的事件属性:</li>
+                <li class="item"><b><span>click  dbclick  mouseenter  mousedown  mouseup  mouseleave  keypress keydown keyup hover</span></b></li>
+                <li class="item">用法大致相同: <em>.event(funtion({};))</em></li>
+            </ul>
+            <ul class="list">
+                四：jQuery效果
+                <li class="item"><b><span>hide  show  toggle slideDown  slideUp  slideToggle  animate</span></b></li>
+                <li class="item">隐藏、显示、隐藏与显示</li>
+                <li class="item">--><em>.hide(speed)</em>;</li>
+            </ul>
+            <ul class="list">
+                五：jQuery 获取属性/操作样式
+                <li class="item">.html()  .text()  .attr()</li>
+                <li class="item">例子：</li>
+                <li class="item">$(document).ready(function() {</li>
+                <li class="item">$("#btn1").click(function() {</li>
+                <li class="item">alert($("input").val()</li>
+                <li class="item">+ "html" + $("#demo").html()</li>
+                <li class="item">+ "text" + $("p").text()</li>
+                <li class="item">+ "attr" + $("button").attr("type")</li>
+                <li class="item">输出结果可以打开vscode进行查看</li>
+                <li class="item">.html() 获取标签下所有的标签</li>
+                <li class="item">.text() 获取标签下的所有文本信息</li>
+                <li class="item">.attr() 获取所有该属性的标签</li>
+                操作样式:
+                <li class="item"><b><span>.addClass("XX") .removeClass() .appent  .prepent  .after  .befor  empty</span></b></li>
+                <li class="item">.appent() 向元素的末尾添加内容 prepent() 在其之前添加</li>
+            </ul>
+            <ul class="list">
+                六：遍历祖先 and 孩子
+                <li class="item">parent parents(所有祖先) childen(直接子元素) find(*) filter</li>
+                <li class="item">例子一看就懂：</li>
+                <li class="item">$("#btn1").click(function() {</li>
+                <li class="item">$("P").first().parent().css({"background-color": "green", "height": "250px"})</li>
+                <li class="item"> $("h1").filter(".h1").css({"color": "red"});</li>
+                <li class="item">})</li>
+                <li class="item">以上例子包含了过滤 父元素的用法 </li>
+                <li class="item">find(".class") 寻找.class的类</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

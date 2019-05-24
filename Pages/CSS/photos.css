@@ -1,0 +1,19 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+img{
+    width: 100%;
+}
+.imgBox{
+    position: absolute;
+    width: 700px;
+    padding: 10px;
+    margin: 80px auto;
+    text-align: center;
+    top: 0px; right: 0px; bottom: 0px; left: 0px;
+    background-color: greenyellow;
+}
+.imgBox button{
+    margin-left: 20px;
+}

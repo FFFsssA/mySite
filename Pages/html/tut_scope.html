@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="utf-8">
+    <style>
+        #content{
+            position: relative;
+            width: 900px;
+            height: 500px;
+            margin: 0px;
+            padding: 0px;
+        }
+        .left{
+            height: 400px;
+            width: 350px;
+            position: relative;
+            left: 0;
+        }
+        .leftMiddle{
+            height: 300px;
+            width: 350px;
+        }
+        .shadow{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            opacity: 0.4;
+            background-color: orange;
+            height: 150px;
+            width: 150px;
+            display: none; /*鼠标进入改为block*/
+        }
+        .shadow.show{
+            display: block;
+            cursor: move;
+        }
+        .list{
+            list-style-type: none;
+            padding-left: 0px;
+        }
+        .item{
+            float: left;
+            height: 75px;
+            width: 75px;
+            margin-right: 12px;
+        }
+        .item.solid{
+            border: 1px solid skyblue;
+        }
+        .right{
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            height: 500px;
+            width: 500px;
+            overflow: hidden;
+            display: none; /*鼠标移动到 -- 改为 block*/
+        }
+        .right.show{
+            display: block;
+        }
+        #largeImg{
+            position: absolute;  /*不设为absolute的话图片不会移动*/
+            top: 300px;
+            left: 300px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id = "content">
+        <div class = "left" id = "mix">
+            <div class = "leftMiddle" id = "middle">
+                <img id = "midImg"src = "../images/snacks_middle-0.jpg">
+                <div class = "shadow"></div>
+            </div>
+                <ul class = "list">
+                    <li><img class = "item" src = "../images/snacks_small-0.jpg" alt="Faile load"></li>
+                    <li><img class = "item" src = "../images/snacks_small-1.jpg" alt="Faile load"></li>
+                    <li><img class = "item" src = "../images/snacks_small-2.jpg" alt="Faile load"></li>
+                    <li><img class = "item" src = "../images/snacks_small-3.jpg" alt="Faile load"></li>
+                </ul>
+        </div>
+        <div class = "right">
+            <img id = "largeImg" src = "../images/snacks_large-0.jpg" alt="None">
+        </div>
+    </div>
+    <script>
+        // 批量返回ID的函数
+        function $(id) {
+            return document.getElementById(id);
+        }
+        window.onload = function() {
+            var item = document.getElementsByClassName("item");
+            var midShow = document.getElementsByClassName("shadow")[0]; //实际上是一个数组 不加[0]会出毛病
+            var right = document.getElementsByClassName("right")[0];
+            var middleImg = $("midImg");
+            var middle = $("middle");
+            var bigImg = $("largeImg");
+            //清除 样式
+            var clean = function() {
+                for(var i = 0; i < item.length; i++) {
+                    item[i].className = "item";
+                }
+                midShow.className = "shadow";
+                right.className = "right";
+            }
+            for(var i = 0; i < item.length; i++) {
+                //给每个item的img都添加鼠标是移动到的事件
+                item[i].addEventListener("mouseenter", function() {
+                    clean();
+                    //给予边缘样式
+                    this.className = "item solid";
+                    //切换中大图的src
+                    // console.log(this.src.slice(this.src.indexOf('-')))
+                    console.log(this);
+                    //  
+                   midImg.src = "../images/snacks_middle" + this.src.slice(this.src.indexOf('-'));
+                   bigImg.src = "../images/snacks_large" + this.src.slice(this.src.indexOf('-'));
+                });
+                item[i].addEventListener("mouseleave", function() {
+                    clean();
+                });
+            }
+            //鼠标进入中等图片 显示shadow以及large图片
+            middle.addEventListener("mouseenter", function() {
+                clean();
+                midShow.className = "shadow show";
+                right.className = "right show";
+            })
+            middle.addEventListener("mouseleave", function() {
+                clean();
+            })
+            //添加鼠标移动事件 让shadow跟随移动used clientX and clientY
+            middle.addEventListener("mousemove", function(e) {
+                var ev = e || window.event;
+                //console.log("X: " + ev.clientX + "Y: " + ev.clientY);
+                var shadowLeft = ev.clientX - (midShow.offsetWidth / 2);
+                var shadowTop = ev.clientY - (midShow.offsetHeight / 2);
+                //console.log(shadowLeft+ ", " + shadowTop);  //如果同时输出鼠标的话 页面会变得很卡顿
+                // 添加限制  要在赋值的前面添加
+
+                var maxMvLeft = middle.offsetWidth - midShow.offsetWidth;  //左，上最大可移动范围
+                var maxMvTop = middle.offsetHeight - midShow.offsetHeight;
+                //  约定边界
+                if(shadowLeft < 0) {
+                    shadowLeft = 0;
+                }
+                if(shadowLeft > maxMvLeft) {
+                    shadowLeft = maxMvLeft;
+                } 
+                if(shadowTop < 0) {
+                    shadowTop = 0;
+                }
+                if(shadowTop > maxMvTop) {
+                    shadowTop = maxMvTop;
+                }
+                midShow.style.top = shadowTop + "px";
+                midShow.style.left = shadowLeft + "px";
+
+                //使大型图片移动
+                // 大图右下移动的距离与中型盒子shadow的右下移动的距离成比例
+                //shadowLeft / maxMvleft = bigImgLeft / bigImageMaxLeft  求 bigImgLeft就好了
+                var bigImageLeft = shadowLeft * (bigImg.offsetWidth - right.offsetWidth) / maxMvLeft;
+                var bigImageTop = shadowTop * (bigImg.offsetHeight - right.offsetHeight) / maxMvTop;
+                //console.log(-bigImageLeft + "," + -bigImageTop);
+                bigImg.style.left = -bigImageLeft + "px";
+                bigImg.style.top = -bigImageTop + "px";
+            })
+        };
+        /*总结：*/
+        /*1：将小中大三种图片布局显示出来
+          2：对小图片添加悬停改变中、大图片src以及边界的样式或事件
+          3：对中等图片添加悬停出现遮罩层的事件
+          4：添加遮罩层移动事件
+          5：根据遮罩层在中型边框的移动距离与最大可移动距离的比例确定大图的移动比例与移动距离
+        */
+    </script>
+</body>
+</html>

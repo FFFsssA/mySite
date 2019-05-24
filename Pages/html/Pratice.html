@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            font-size: 10px;
+        }
+
+        #wrap {
+            height: 800px;
+            width: 98%;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .row_list {
+            flex: 1.0;
+            box-shadow: 0px 1px 1px 2px #888;
+            margin-left: 1rem;
+            margin-top: 0.2rem;
+            background-color: rgb(237, 245, 155);
+        }
+
+        .list_child {
+            height: 100%;
+            width: 100%;
+            /* list-style-type: none; */
+            padding: .5rem;
+        }
+
+        .item {
+            /* top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            margin-bottom: 15px; */
+            margin: auto;
+            height: 3rem;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            text-align: center;
+            line-height: 3rem;
+        }
+
+        .item a {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5rem;
+            color: rgb(126, 157, 158);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="row_list">
+            <ul class="list_child">
+                <li class="item"><a onfocus="blur()" href="pra_jQuery.html">jQuery实战动画</a></li>
+                <li class="item"><a onfocus="blur()" href="#">jQuery实战验证表单</a></li>
+                <li class="item"><a onfocus="blur()" href="#">占位</a></li>
+            </ul>
+        </div>
+        <div class="row_list">
+            <ul class="list_child">
+                <li class="item"><a onfocus="blur()" href="#">占位</a></li>
+                <li class="item"><a onfocus="blur()" href="#">占位</a></li>
+                <li class="item"><a onfocus="blur()" href="#">占位</a></li>
+            </ul>
+        </div>
+        <div class="row_list">
+            <ul class="list_child">
+                <li class="item"><a onfocus="blur()" href="#">占位</a></li>
+                <li class="item"><a onfocus="blur()" href="#">占位</a></li>
+                <li class="item"><a onfocus="blur()" href="#">占位</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
