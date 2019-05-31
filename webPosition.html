@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- only use css to adjust pages's surface -->
+</head>
+
+<body>
+    <!-- 
+        * 行内或类行内元素水平居中
+        * inline/inline-block/inline-table/inline/flex 等类型的元素实现居中
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .content,
+        nav {
+            text-align: center; /*!!!!!!*/
+        }
+
+        nav a {
+            text-decoration: none;
+            border-radius: 3px;
+        }
+    </style>
+    <div class="content">
+        <nav class="nav">
+            <a href="">None</a>
+            <a href="">None</a>
+            <a href="">None</a>
+            <a href="">None</a>
+        </nav>
+    </div>
+    -->
+    <!-- 
+        * blocks 元素水平居中
+    
+    <style>
+        .content {
+            text-align: center;
+            /* 使用text-align的形式 需要设置inline-block *//*!!!!!!*/
+        }
+
+        .content div {
+            width: 60px;
+            border: solid 1px red;
+            display: inline-block;
+        }
+        .flex {
+            /*相对于其中的每个子元素*/
+            display: flex;              /*!!!!!!*/
+            justify-content: center;  /*!!!!!!*/
+            /* 使用flex水平居中块元素 */
+            /*flex-direction: colum;*/
+        }
+    </style>
+    <div class="content">
+        <div class="block1">
+            <p>some some some </p>
+        </div>
+        <div class="block1">
+            <p>some some some some</p>
+        </div>
+    </div>
+    <div class="flex">
+        <div class="block">
+            <p>some some some </p>
+        </div>
+        <div class="block">
+            <p>some some some some</p>
+        </div>
+    </div>
+    -->
+    <!-- 垂直居中 适用于有确定高度的元素-->
+    <!-- height: 100   line-height:100-->
+    <!-- padding-top: value  padding-bottom: value-->
+    <!-- table-cell -->
+    <!--  
+    <div class="table">
+        <p>I am only one, I am only guy that you can't get</p>
+    </div>
+    <style>
+        .table {
+            height: 200px;
+            width: 200px;
+            display: table;  /*!!!!!!*/
+        }
+        .table p {
+            display: table-cell;  /*!!!!!!*/
+            vertical-align: middle;  /*!!!!!!*/
+            width: 40px;
+            text-align: center;
+        }
+    </style>
+    -->
+    <!-- 垂直居中 未知元素高度-->
+    <!--  
+    <div class="ghost">
+        <p>I am only one, I am only guy that you can't get</p>
+    </div>
+    <style>
+        .ghost::before {  /*幽灵元素*/
+            content: "";
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+        }
+        .ghost p {
+            width: 100px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+    -->
+    <!-- 块级元素已知高度 (是当前块级元素高度，而不是父级元素高度)-->
+    <!--  
+    <div class="content">
+        <div class="son">
+            this is thi s i this is this is this is
+        </div>
+    </div>
+    <style>
+        .content {
+            position: relative;
+            height: 200px;
+            width: 200px;
+            border: solid 1px red;
+        }
+        .content .son {
+            position: absolute;
+            top: 50%;
+            height: 100px;
+            margin-top: -50px;
+        }
+    </style>
+    -->
+    <!-- 未知高度的块级元素 -->
+    <!--  
+    <div class="content">
+        <div class="son">
+            this is thi s i this is this is this is
+        </div>
+    </div>
+    <div class="content2">
+        <div class="son2">
+            this is thi s i this is this is this is
+        </div>
+    </div>
+    <style>
+        .content {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: solid 1px red;
+        }
+
+        /*未知.son div块级元素的高度*/
+        .content .son {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /*垂直居中了*/
+        }
+        .content2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 300px;
+            height: 300px;
+            border: solid red 1px;
+        }
+    </style>
+    -->
+    <!-- 垂直且居中 -->
+    <!--postion: absolute top: 50%; left: 50%; margin: 宽高一半 -->
+    <!--postion: absolute top: 50%; left: 50%; transform: translate(-50%, -50%)-->
+    <!-- display: flex; justify-content: center; align-items: center -->
+    <!-- 响应式布局宽高都是不固定的情况下使用flex ghost transform 比较合适 -->
+    <!-- 如果使用em形式可以考虑margin-top margin line-height table-table-cell-->
+    <!-- 行内元素如inline/inline-block/inline-table/inline/flex可以使用text-align -->
+</body>
+
+</html>
